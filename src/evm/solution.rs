@@ -2,7 +2,7 @@ use std::{fs::{File, self}, sync::OnceLock, path::Path, str::FromStr, time::Syst
 
 use handlebars::Handlebars;
 use serde::Serialize;
-use tracing::error;
+use tracing::{debug, error};
 
 use crate::{input::SolutionTx, evm::types::checksum};
 use super::{OnChainConfig, Chain, uniswap::{self, UniswapProvider}, types::{EVMAddress, EVMU256}};
@@ -43,8 +43,8 @@ pub fn generate_test<T: SolutionTx>(solution: String, inputs: Vec<T>) {
         return;
     }
     let args = TemplateArgs::new(solution, trace);
-    if let Err(e) = args {
-        error!("generate_test error: {}", e);
+    if args.is_err() {
+        debug!("skip generating test: not evm solution.");
         return;
     }
     let args = args.unwrap();

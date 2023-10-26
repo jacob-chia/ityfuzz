@@ -19,11 +19,11 @@ impl<E: libafl::executors::HasObservers>
     fn minimize(
         &mut self,
         state: &mut MoveFuzzState,
-        exec: &mut E,
+        _exec: &mut E,
         input: &TxnTrace<MoveLoc, MoveAddress, ConciseMoveInput>,
-        objective: &mut MoveOracleFeedback<'_>,
-        corpus_id: usize,
+        _objective: &mut MoveOracleFeedback<'_>,
+        _corpus_id: usize,
     ) -> Vec<ConciseMoveInput> {
-        todo!()
+        input.get_concise_inputs(state)
     }
 }
