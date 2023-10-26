@@ -595,8 +595,7 @@ where
                 );
                 info!("{}", cur_report);
 
-                let concise_inputs = trace.get_concise_inputs(state);
-                solution::generate_test(cur_report.clone(), concise_inputs);
+                solution::generate_test(cur_report.clone(), minimized);
 
                 let vuln_file = format!("{}/vuln_info.jsonl", self.work_dir.as_str());
                 let mut f = OpenOptions::new()
