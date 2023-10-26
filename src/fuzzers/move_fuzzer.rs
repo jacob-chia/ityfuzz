@@ -45,6 +45,8 @@ use crate::r#move::scheduler::{MoveTestcaseScheduler, MoveVMStateScheduler};
 use crate::r#move::types::MoveFuzzState;
 #[cfg(feature = "sui_support")]
 use crate::scheduler::SortedDroppingScheduler;
+#[cfg(feature = "sui_support")]
+use crate::r#move::minimizer::MoveMinimizer;
 use crate::state::FuzzState;
 
 pub struct MoveFuzzConfig {
@@ -113,6 +115,7 @@ pub fn move_fuzzer(
         infant_feedback,
         infant_result_feedback,
         objective,
+        MoveMinimizer,
         config.work_dir.clone(),
     );
     fuzzer

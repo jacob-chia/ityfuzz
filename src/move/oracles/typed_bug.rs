@@ -28,8 +28,6 @@ impl TypedBugOracle {
     }
 }
 
-
-
 impl Oracle<MoveVMState, MoveAddress, CompiledModule, MoveFunctionInput, ModuleId, MoveSlotTy, MoveOutput, MoveFunctionInput, MoveFuzzState, ConciseMoveInput>
 for TypedBugOracle {
     fn transition(&self, _ctx: &mut MoveOracleCtx<'_>, _stage: u64) -> u64 {
